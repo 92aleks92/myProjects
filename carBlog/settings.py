@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'retroCar.apps.RetroCarConfig',  # регистрация приложения
-    #'bootstrap3'
+
 ]
 
 
