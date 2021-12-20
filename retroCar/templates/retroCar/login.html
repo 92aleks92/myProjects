@@ -1,27 +1,18 @@
 {% extends 'retroCar/base.html' %}
 
 {% block content %}
-<form>
-    <div class="form-group">
-        <label for="login">Логин</label>
-        <input type="login" class="form-control" id="login" aria-describedby="loginHelp" placeholder="Enter login">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Почта</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-               placeholder="Enter email">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Пароль</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Согласие на обработку данных</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Войти</button>
-    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+<h1>{{ title }}</h1>
+<form method="post">
+    {% csrf_token %}
 
+<div class="form-error">{{ form.non_field_errors }}</div>
+
+{% for f in form %}
+<p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+<div class="form-error">{{ f.errors }}</div>
+{% endfor %}
+
+    <button type="submit">Войти</button>
 </form>
 
 {% endblock %}
