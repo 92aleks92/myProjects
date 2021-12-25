@@ -5,7 +5,7 @@ from carBlog import settings
 from retroCar.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('templates/', admin.site.urls),
     path('', include('retroCar.urls')),
 ]
 
@@ -16,5 +16,6 @@ if settings.DEBUG:
         path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
 
-    urlpatterns += static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)
+    # static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # в режиме отладки когда DEBUG=True, к urlpatterns добавляется ещё один маршрут для статический данных и графических файлов
